@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cmath>
+
+struct point
+{
+	double x,y;
+	virtual double distance(const point& p1) const
+	{
+		return sqrt((p1.x - x) * (p1.x - x) + (p1.y - y)*(p1.y - y));
+	}
+};
+
+struct point3d : public point
+{
+	int z;
+	double distance(const point& p1) const
+	{
+		return sqrt((p1.x - x) * (p1.x - x) + (p1.y - y)*(p1.y - y) + (p1.z - z)* (p1.z - zt);
+	}
+};
+
+double distance(const point& p1, const point& p2)
+{
+	return p1.distance(p2);
+}
+
+int main()
+{
+	point a{0, 0}, b{1 , 1};
+	std::cout << distance(a, b);
+}
