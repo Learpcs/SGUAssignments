@@ -1,10 +1,11 @@
-#include <tuple>
 #include <stdexcept>
 #include <algorithm>
 
 struct triangle
 {
     int a,b,c;
+
+    static int cnt;
 
     triangle(int a, int b, int c)
     {
@@ -15,6 +16,8 @@ struct triangle
         this->c = c;
         if(!(a + b < c))
             throw std::invalid_argument("Not a triangle");
+        if(a*a + b*b == c*c)
+            ++cnt;
     }
 
     bool operator==(const triangle& rhs) const
@@ -27,3 +30,5 @@ struct triangle
         return !(*this == rhs);
     }
 };
+
+int triangle::cnt = 0;
