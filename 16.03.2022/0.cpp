@@ -22,21 +22,25 @@ void printlevel(int n, int padding)
 {
     if(n > 1)
         printlevel(n - 1, padding); 
-    printline(n, padding);
+    printline(n, padding - n + 1);
 }
 
 void t(int n, int padding)
 {
-    printlevel(n, padding);
-    t(n - 1, padding);
+    if(n > 1)
+    {
+        t(n - 1, padding);
+        printlevel(n, padding);
+    }
+
 }
 
 void tree(int n)
 {
-    t(n, n);
+    t(n + 1, n);
 }
 
 int main()
 {
-    tree(3);
+    tree(4);
 }
